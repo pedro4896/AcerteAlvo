@@ -5,6 +5,8 @@ html,body{
     background-position: center center;
     background-attachment: fixed;
     overflow: hidden;
+    cursor: url(alvo.png), auto;
+    
 }
 
 article{
