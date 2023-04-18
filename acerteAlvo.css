@@ -5,8 +5,11 @@ html,body{
     background-position: center center;
     background-attachment: fixed;
     overflow: hidden;
-    cursor: url(alvo.png), auto;
-    
+    cursor: url(foco.png) 32 32, auto; 
+}
+
+button{
+    cursor: pointer;
 }
 
 article{
@@ -35,6 +38,7 @@ canvas{
     height: 190px;
     background: #fff;
     transition: 0.5s;
+    cur
 }
 
 .cartao:hover{
