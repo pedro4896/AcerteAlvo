@@ -38,7 +38,7 @@ canvas{
     height: 190px;
     background: #fff;
     transition: 0.5s;
-    cur
+    cursor: pointer;
 }
 
 .cartao:hover{

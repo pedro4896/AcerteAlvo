@@ -8,6 +8,7 @@ var xAleatorio;
 var yAleatorio;
 var altura = window.innerHeight;
 var largura = window.innerWidth;
+var pontuacao = 0;
 
 tela.width = largura;
 tela.height = altura;
@@ -20,9 +21,9 @@ function desenhaCirculo(x, y, raio, cor) {
 }
 
 function desenhaAlvo(x ,y) {
-    desenhaCirculo(x, y, raio + 20, '#800404');
-    desenhaCirculo(x, y, raio + 10, 'white');
-    desenhaCirculo(x, y, raio, '#800404');
+    desenhaCirculo(x, y, raio + 20, '#800404'); // pontuação 20
+    desenhaCirculo(x, y, raio + 10, 'white'); // pontuação 50
+    desenhaCirculo(x, y, raio, '#800404'); // pontuação 100
 }
 
 function sorteiaPosicao(maximo) {
@@ -38,19 +39,36 @@ function atualizaTela() {
         limpaTela();
         xAleatorio = sorteiaPosicao(largura);
         yAleatorio = sorteiaPosicao(altura);
-        desenhaAlvo(xAleatorio, yAleatorio);   
+        desenhaAlvo(xAleatorio, yAleatorio);  
+        console.log(pontuacao);
     }
 }
 
 function dispara(evento){
     var x = evento.pageX - tela.offsetLeft;
     var y = evento.pageY - tela.offsetTop;
-    
-    if((x > xAleatorio - raio) && (x < xAleatorio + raio) && 
-    (y > yAleatorio - raio) && (y < yAleatorio + raio)){
+
+    /* adicionando/subtraindo a altura da tela nas comparações dos valores do eixo Y */
+    if (x > xAleatorio - raio && x < xAleatorio + raio &&
+        y > yAleatorio - raio - tela.offsetTop && y < yAleatorio + raio - tela.offsetTop) {
+    pontuacao += 100;
+    escondeCanvas();
+    apresentaAcerto();
+    } 
+
+    else if (x > xAleatorio - (raio + 10) && x < xAleatorio + (raio + 10) &&
+            y > yAleatorio - (raio + 10) - tela.offsetTop && y < yAleatorio + (raio + 10) - tela.offsetTop) {
+        pontuacao += 50;
         escondeCanvas();
         apresentaAcerto();
-    }    
+    } 
+
+    else if (x > xAleatorio - (raio + 20) && x < xAleatorio + (raio + 20) &&
+            y > yAleatorio - (raio + 20) - tela.offsetTop && y < yAleatorio + (raio + 20) - tela.offsetTop) {
+        pontuacao += 20;
+        escondeCanvas();
+        apresentaAcerto();
+    }
 }
 
 function apresentaCanvas() {
