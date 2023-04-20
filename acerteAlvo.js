@@ -8,7 +8,10 @@ var xAleatorio;
 var yAleatorio;
 var altura = window.innerHeight;
 var largura = window.innerWidth;
+
 var pontuacao = 0;
+var pontos = document.getElementById("pontos");
+pontos.innerHTML = "<h2>0 pontos</h2>";
 
 tela.width = largura;
 tela.height = altura;
@@ -40,7 +43,6 @@ function atualizaTela() {
         xAleatorio = sorteiaPosicao(largura);
         yAleatorio = sorteiaPosicao(altura);
         desenhaAlvo(xAleatorio, yAleatorio);  
-        console.log(pontuacao);
     }
 }
 
@@ -86,6 +88,7 @@ function escondeCanvas() {
 function apresentaAcerto() {
     var acerto = document.getElementById("acerto");
     acerto.style.display = "flex";
+    pontos.innerHTML = "<h2>"+pontuacao+" pontos</h2>";
 }
 
 function escondeAcerto() {

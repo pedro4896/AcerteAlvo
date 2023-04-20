@@ -1,3 +1,8 @@
+@font-face{
+    font-family: "Angel-Arms";
+    src: url("Angel-Arms.woff");
+}
+
 html,body{
     background-image: url("deserto.jpg");
     background-size: cover;
@@ -6,6 +11,7 @@ html,body{
     background-attachment: fixed;
     overflow: hidden;
     cursor: url(foco.png) 32 32, auto; 
+    font-family: "Angel-Arms";
 }
 
 button{
@@ -19,6 +25,50 @@ article{
 canvas{
     display: none;
 }
+
+/* ----- Pontuação ----- */
+
+#pontuacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, -4%);
+    width: 300px;
+    height: 50px; 
+    background-color: #292929;
+    color: #F3C16A;
+}
+
+#pontuacao .cartao{
+    position: relative;
+    width: 300px;
+    height: 70px;
+    background: #292929;
+    cursor: url(foco.png) 32 32, auto; 
+}
+
+#pontuacao .cartao .titulo{
+    top: -15px;
+}
+
+#pontuacao .cartao .titulo h4{
+    font-size: 15px;
+}
+
+#pontuacao .cartao .conteudo .detalhes{
+    transform: translateY(37px);
+}
+
+#pontuacao .cartao .conteudo .detalhes h2{
+    letter-spacing: 5px;
+    font-size: 1.5em;
+    color: #F3C16A;
+}
+
+/* ----- /Pontuação ----- */
 
 #inicio{
     display: flex;
@@ -35,14 +85,18 @@ canvas{
 .cartao{
     position: relative;
     width: 400px;
-    height: 190px;
-    background: #fff;
+    height: 250px;
+    background: #292929;
     transition: 0.5s;
     cursor: pointer;
 }
 
 .cartao:hover{
-    height: 250px;
+    height: 300px;
+}
+
+#acerto .cartao{
+    height: 200px;
 }
 
 .cartao .linhas{
@@ -81,7 +135,7 @@ canvas{
 
 .cartao .titulo{
     position: absolute;
-    top: -15px;
+    top: -40px;
     left: 50%;
     transform: translateX(-50%);
     width: 250px;
@@ -91,7 +145,7 @@ canvas{
     overflow: hidden;
 }
 
-.cartao:hover .titulo{
+#inicio .cartao:hover .titulo, #acerto .cartao:hover .titulo{
     top: -23px;
     width: 350px;
     height: 50px;
@@ -160,8 +214,8 @@ canvas{
     transform: translateY(20px);
 }
 
-.cartao:hover .conteudo .detalhes{
-    transform: translateY(-10px);
+#inicio .cartao:hover .conteudo .detalhes{
+    transform: translateY(0px);
 }
 
 #acerto .cartao:hover .conteudo .detalhes{
@@ -180,7 +234,7 @@ canvas{
     text-align: center;
     width: 50%;
     transition: 0.5s;
-    transform: translateY(30px);
+    transform: translateY(20px);
     overflow: hidden;
     background: transparent;
     border: 0;
