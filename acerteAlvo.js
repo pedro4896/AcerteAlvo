@@ -78,6 +78,7 @@ function apresentaCanvas() {
     inicio.style.display = "none";
     iniciar = true;
     tela.style.display = "block";
+    apresentaPontuacao();
 }
 
 function escondeCanvas() {
@@ -95,6 +96,11 @@ function escondeAcerto() {
     var acerto = document.getElementById("acerto");
     acerto.style.display = "none";
     apresentaCanvas();
+}
+
+function apresentaPontuacao(){
+    var pontuacao = document.getElementById("pontuacao");
+    pontuacao.style.display = "flex";
 }
 
 tela.onclick = dispara;
