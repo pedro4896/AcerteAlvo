@@ -29,8 +29,14 @@ function desenhaAlvo(x ,y) {
     desenhaCirculo(x, y, raio, '#800404'); // pontuação 100
 }
 
-function sorteiaPosicao(maximo) {
-    return Math.floor(Math.random() * maximo);
+function sorteiaPosicaoX(maximo) {
+    minimo = 0;
+    return Math.floor(Math.random() * (maximo - minimo + 1) + minimo);
+}
+
+function sorteiaPosicaoY(maximo) {
+    minimo = 130;
+    return Math.floor(Math.random() * (maximo - minimo + 1) + minimo);
 }
 
 function limpaTela() {
@@ -38,11 +44,11 @@ function limpaTela() {
 }
 
 function atualizaTela() {
-    if (iniciar == true) {
+    if (iniciar == true){
         limpaTela();
-        xAleatorio = sorteiaPosicao(largura);
-        yAleatorio = sorteiaPosicao(altura);
-        desenhaAlvo(xAleatorio, yAleatorio);  
+        xAleatorio = sorteiaPosicaoX(largura);
+        yAleatorio = sorteiaPosicaoY(altura);
+        desenhaAlvo(xAleatorio, yAleatorio); 
     }
 }
 
