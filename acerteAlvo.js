@@ -3,6 +3,8 @@ var pincel = tela.getContext("2d");
 var raio = 10; // raio da circunferência
 var velocidade = 1000; // Velocidade em milisegundos
 var iniciar = false;
+var contemUsuario = false;
+var nomeUsuario = undefined;
 
 var xAleatorio;
 var yAleatorio;
@@ -52,6 +54,11 @@ function atualizaTela() {
     }
 }
 
+function parabens(){
+    const parabens = document.getElementById("parabens");
+    parabens.innerHTML = "Parabéns "+ nomeUsuario +", Você Acertou o Alvo!";
+}
+
 function dispara(evento){
     var x = evento.pageX - tela.offsetLeft;
     var y = evento.pageY - tela.offsetTop;
@@ -61,6 +68,7 @@ function dispara(evento){
         y > yAleatorio - raio - tela.offsetTop && y < yAleatorio + raio - tela.offsetTop) {
     pontuacao += 100;
     escondeCanvas();
+    parabens();
     apresentaAcerto();
     } 
 
@@ -68,6 +76,7 @@ function dispara(evento){
             y > yAleatorio - (raio + 10) - tela.offsetTop && y < yAleatorio + (raio + 10) - tela.offsetTop) {
         pontuacao += 50;
         escondeCanvas();
+        parabens();
         apresentaAcerto();
     } 
 
@@ -75,16 +84,22 @@ function dispara(evento){
             y > yAleatorio - (raio + 20) - tela.offsetTop && y < yAleatorio + (raio + 20) - tela.offsetTop) {
         pontuacao += 20;
         escondeCanvas();
+        parabens();
         apresentaAcerto();
     }
 }
 
 function apresentaCanvas() {
-    var inicio = document.getElementById("inicio");
-    inicio.style.display = "none";
-    iniciar = true;
-    tela.style.display = "block";
-    apresentaPontuacao();
+    verificaUsuario();
+    if(contemUsuario == true){
+        escondeNome();
+        escondeUsuario();
+        iniciar = true;
+        tela.style.display = "block";
+        apresentaPontuacao();
+    }else{
+        apresentaNome();
+    }
 }
 
 function escondeCanvas() {
@@ -109,6 +124,39 @@ function apresentaPontuacao(){
     pontuacao.style.display = "flex";
 }
 
-tela.onclick = dispara;
+function apresentaUsuario(){
+    var inicio = document.getElementById("inicio");
+    inicio.style.display = "none";
 
+    var usuario = document.getElementById("usuario");
+    usuario.style.display = "flex";
+}
+
+function escondeUsuario(){
+    var usuario = document.getElementById("usuario");
+    usuario.style.display = "none";
+}
+
+function verificaUsuario() {
+    var usuario = document.getElementById("nomeUsuario").value;
+    if(usuario == ""){
+        contemUsuario = false;
+    }
+    else{
+        contemUsuario = true;
+        nomeUsuario = usuario;
+    }
+}
+
+function apresentaNome(){
+    var nome = document.getElementById("insiraNome");
+    nome.style.display = "block";
+}
+
+function escondeNome(){
+    var nome = document.getElementById("insiraNome");
+    nome.style.display = "nome";
+}
+
+tela.onclick = dispara;
 setInterval(atualizaTela, velocidade);

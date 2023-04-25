@@ -47,7 +47,28 @@
                         <div class="detalhes">
                             <h2>Bem-vindo ao nosso jogo de tiro ao alvo! Aqui você poderá testar sua habilidade e pontaria, acertando o alvo o mais próximo possível do centro.</h2>
                             <div class="acaoBtn">
-                                <button type="button" onclick="apresentaCanvas()">Iniciar</button>
+                                <button type="button" onclick="apresentaUsuario()">Iniciar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <article class="d-flex">
+        <div class="container align-self-center">
+            <div class="row justify-content-center" id="usuario">
+                <div class="cartao">
+                    <div class="linhas"></div>
+                    <div class="titulo"><h4>Acerte o Alvo</h4></div>
+                    <div class="conteudo">
+                        <div class="detalhes">
+                            <h2>Digite seu nome de usuário: </h2>
+                            <input type="text" placeholder="Nome de Usuário" id="nomeUsuario">
+                            <div id="insiraNome"><span>Insira o nome do usuário!</span></div>
+                            <div class="acaoBtn">
+                                <button type="button" onclick="apresentaCanvas()">Pronto</button>
                             </div>
                         </div>
                     </div>
@@ -64,7 +85,7 @@
                     <div class="titulo"><h4>Acerte o Alvo</h4></div>
                     <div class="conteudo">
                         <div class="detalhes">
-                            <h2>Parabéns atirador, Você Acertou o Alvo!</h2>
+                            <h2 id="parabens"></h2>
                             <div class="acaoBtn">
                                 <button type="button" onclick="escondeAcerto()">Continuar</button>
                             </div>
