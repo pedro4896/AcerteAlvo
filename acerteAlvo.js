@@ -1,10 +1,15 @@
 var tela = document.querySelector("canvas");
 var pincel = tela.getContext("2d");
 var raio = 10; // raio da circunferência
-var velocidade = 1000; // Velocidade em milisegundos
 var iniciar = false;
 var contemUsuario = false;
 var nomeUsuario = undefined;
+
+const velocidade = [2000,1500,1000,500,250]; // Velocidade em milisegundos
+const erros = [5,3,2,1,0];
+const listaPontuacao = [10,20,30,50,100];
+const nivel = [50,100,150,200,250];
+const municao = ["ilimitado",20,10,5,]
 
 var xAleatorio;
 var yAleatorio;
@@ -12,6 +17,7 @@ var altura = window.innerHeight;
 var largura = window.innerWidth;
 
 var pontuacao = 0;
+
 var pontos = document.getElementById("pontos");
 pontos.innerHTML = "<h2>0 pontos</h2>";
 
@@ -66,7 +72,7 @@ function dispara(evento){
     /* adicionando/subtraindo a altura da tela nas comparações dos valores do eixo Y */
     if (x > xAleatorio - raio && x < xAleatorio + raio &&
         y > yAleatorio - raio - tela.offsetTop && y < yAleatorio + raio - tela.offsetTop) {
-    pontuacao += 100;
+    pontuacao += listaPontuacao[0];
     escondeCanvas();
     parabens();
     apresentaAcerto();
@@ -74,7 +80,7 @@ function dispara(evento){
 
     else if (x > xAleatorio - (raio + 10) && x < xAleatorio + (raio + 10) &&
             y > yAleatorio - (raio + 10) - tela.offsetTop && y < yAleatorio + (raio + 10) - tela.offsetTop) {
-        pontuacao += 50;
+        pontuacao += listaPontuacao[1];
         escondeCanvas();
         parabens();
         apresentaAcerto();
@@ -82,7 +88,7 @@ function dispara(evento){
 
     else if (x > xAleatorio - (raio + 20) && x < xAleatorio + (raio + 20) &&
             y > yAleatorio - (raio + 20) - tela.offsetTop && y < yAleatorio + (raio + 20) - tela.offsetTop) {
-        pontuacao += 20;
+        pontuacao += listaPontuacao[2];
         escondeCanvas();
         parabens();
         apresentaAcerto();
@@ -159,4 +165,4 @@ function escondeNome(){
 }
 
 tela.onclick = dispara;
-setInterval(atualizaTela, velocidade);
+setInterval(atualizaTela, velocidade[4]);
