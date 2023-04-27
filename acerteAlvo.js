@@ -5,11 +5,21 @@ var iniciar = false;
 var contemUsuario = false;
 var nomeUsuario = undefined;
 
-const velocidade = [2000,1500,1000,500,250]; // Velocidade em milisegundos
-const erros = [5,3,2,1,0];
+const listaVelocidade = [2000,1500,1000,500,250]; // Velocidade em milisegundos
+const listaErros = [5,3,2,1,0];
 const listaPontuacao = [10,20,30,50,100];
-const nivel = [50,100,150,200,250];
-const municao = ["ilimitado",20,10,5,]
+const listaTotalPontos = [50,100,150,200,250];
+const listaNivel = [1,2,3,4,5];
+const listaMunicao = ["ilimitado",20,10,5,0];
+
+var municao = undefined;
+var velocidade  = 2000;
+var erros = undefined;
+var pontosAdicionais = undefined;
+var totalPontos = undefined;
+var nivel = 1;
+var errosAtuais = 0;
+var municaoAtual = 0;
 
 var xAleatorio;
 var yAleatorio;
@@ -50,19 +60,58 @@ function sorteiaPosicaoY(maximo) {
 function limpaTela() {
     pincel.clearRect(0, 0, largura, altura);
 }
+function atualizaDados(){
+    municao = listaMunicao[nivel-1];
+    velocidade = listaVelocidade[nivel-1];   
+    erros = listaErros[nivel-1];    
+    pontosAdicionais = listaPontuacao[nivel-1];   
+    totalPontos = listaTotalPontos[nivel-1];   
+}
+
+function verificaTotalPontos(totalPontos) {
+    if (totalPontos >= pontuacao) {
+       return true; 
+    }
+    else{
+        return false;
+    }
+}
+
+function verificaTempo() {
+    
+}
+
+function verificaMunicao(municao) {
+    if (municaoAtual > municao) {
+        return true
+    }
+    else{
+        return false;
+    } 
+}
+
+function verificaErros(erros) {
+    if (errosAtuais > erros) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
 function atualizaTela() {
+    atualizaDados();
+    console.log("🚀 ~ file: acerteAlvo.js:79 ~ atualizaTela ~ totalPontos:", totalPontos)
+    console.log("🚀 ~ file: acerteAlvo.js:77 ~ atualizaTela ~ pontosAdicionais:", pontosAdicionais)
+    console.log("🚀 ~ file: acerteAlvo.js:75 ~ atualizaTela ~ erros:", erros)
+    console.log("🚀 ~ file: acerteAlvo.js:73 ~ atualizaTela ~ velocidade:", velocidade)
+    console.log("🚀 ~ file: acerteAlvo.js:71 ~ atualizaTela ~ municao:", municao)
     if (iniciar == true){
         limpaTela();
         xAleatorio = sorteiaPosicaoX(largura);
         yAleatorio = sorteiaPosicaoY(altura);
-        desenhaAlvo(xAleatorio, yAleatorio); 
+        desenhaAlvo(xAleatorio, yAleatorio);
     }
-}
-
-function parabens(){
-    const parabens = document.getElementById("parabens");
-    parabens.innerHTML = "Parabéns "+ nomeUsuario +", Você Acertou o Alvo!";
 }
 
 function dispara(evento){
@@ -72,25 +121,22 @@ function dispara(evento){
     /* adicionando/subtraindo a altura da tela nas comparações dos valores do eixo Y */
     if (x > xAleatorio - raio && x < xAleatorio + raio &&
         y > yAleatorio - raio - tela.offsetTop && y < yAleatorio + raio - tela.offsetTop) {
-    pontuacao += listaPontuacao[0];
+    pontuacao += pontosAdicionais;
     escondeCanvas();
-    parabens();
     apresentaAcerto();
     } 
 
     else if (x > xAleatorio - (raio + 10) && x < xAleatorio + (raio + 10) &&
             y > yAleatorio - (raio + 10) - tela.offsetTop && y < yAleatorio + (raio + 10) - tela.offsetTop) {
-        pontuacao += listaPontuacao[1];
+        pontuacao += pontosAdicionais;
         escondeCanvas();
-        parabens();
         apresentaAcerto();
     } 
 
     else if (x > xAleatorio - (raio + 20) && x < xAleatorio + (raio + 20) &&
             y > yAleatorio - (raio + 20) - tela.offsetTop && y < yAleatorio + (raio + 20) - tela.offsetTop) {
-        pontuacao += listaPontuacao[2];
-        escondeCanvas();
-        parabens();
+        pontuacao += pontosAdicionais;
+        escondeCanvas();   
         apresentaAcerto();
     }
 }
@@ -165,4 +211,4 @@ function escondeNome(){
 }
 
 tela.onclick = dispara;
-setInterval(atualizaTela, velocidade[4]);
+setInterval(atualizaTela, listaVelocidade[nivel-1]);
