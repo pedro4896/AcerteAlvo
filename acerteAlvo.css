@@ -120,12 +120,52 @@ canvas{
     transform: translateY(15px);
 }
 
-/* ----- Usuario ----- */
+/* ----- /Usuario ----- */
+
+/* ----- ProximoNivel -----*/
+#proximoNivel{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#proximoNivel .cartao{
+    height: 200px;
+}
+
+#proximoNivel .cartao .conteudo .detalhes{
+    transform: translateY(30px);
+}
+
+#proximoNivel .cartao:hover .conteudo .detalhes{
+    transform: translateY(10px);
+}
+
+#proximoNivel .cartao .conteudo .detalhes p{
+    color: #F3C16A;
+}
+
+#proximoNivel .cartao .conteudo .detalhes .acaoBtn button{
+    transform: translateY(60px);
+}
+
+#proximoNivel .cartao:hover .conteudo .detalhes .acaoBtn button{
+    transform: translateY(10px);
+}
+
+#proximoNivel .cartao .conteudo .detalhes .acaoBtn button::after{
+    content: 'Próximo';
+}
+
+/* ----- /ProximoNivel -----*/
+
 #inicio{
     display: flex;
 }
 
-#acerto {
+#gameOver {
     display: none;
     position: absolute;
     top: 50%;
@@ -146,7 +186,7 @@ canvas{
     height: 300px;
 }
 
-#acerto .cartao{
+#gameOver .cartao{
     height: 200px;
 }
 
@@ -196,7 +236,7 @@ canvas{
     overflow: hidden;
 }
 
-#inicio .cartao:hover .titulo, #acerto .cartao:hover .titulo{
+#inicio .cartao:hover .titulo, #gameOver .cartao:hover .titulo, #proximoNivel .cartao:hover .titulo{
     top: -23px;
     width: 350px;
     height: 50px;
@@ -261,16 +301,17 @@ canvas{
     transform: translateY(60px);
 }
 
-#acerto .cartao .conteudo .detalhes{
-    transform: translateY(20px);
+#gameOver .cartao .conteudo .detalhes{
+    font-size: 30px;
+    transform: translateY(45px);
 }
 
 #inicio .cartao:hover .conteudo .detalhes{
     transform: translateY(0px);
 }
 
-#acerto .cartao:hover .conteudo .detalhes{
-    transform: translateY(-10px);
+#gameOver .cartao:hover .conteudo .detalhes{
+    transform: translateY(10px);
 }
 
 .cartao .conteudo .detalhes h2{
@@ -297,11 +338,19 @@ canvas{
     text-transform: uppercase;
 }
 
-#acerto .cartao .conteudo .detalhes .acaoBtn button{
+#gameOver .cartao .conteudo .detalhes .acaoBtn{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#gameOver .cartao .conteudo .detalhes .acaoBtn button{
+    margin: 15px;
+    font-size: 15px;
     transform: translateY(60px);
 }
 
-#acerto .cartao:hover .conteudo .detalhes .acaoBtn button{
+#gameOver .cartao:hover .conteudo .detalhes .acaoBtn button{
     transform: translateY(20px);
 }
 
@@ -336,8 +385,12 @@ canvas{
     background: #292929;
 }
 
-#acerto .cartao .conteudo .detalhes .acaoBtn button::after{
-    content: 'Continuar';
+#gameOver .cartao .conteudo .detalhes .acaoBtn button#reiniciar::after{
+    content: 'Reiniciar';
+}
+
+#gameOver .cartao .conteudo .detalhes .acaoBtn button#menu::after{
+    content: 'Menu';
 }
 
 #usuario .cartao .conteudo .detalhes .acaoBtn button::after{

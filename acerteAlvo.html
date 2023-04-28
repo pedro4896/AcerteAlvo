@@ -31,6 +31,7 @@
             <div class="conteudo">
                 <div class="detalhes">
                     <div id="pontos"></div>
+                    <div id="sla"></div>
                 </div>
             </div>
         </div>
@@ -79,7 +80,7 @@
 
     <article class="d-flex" >
         <div class="container align-self-center">
-            <div class="row justify-content-center" id="acerto">
+            <div class="row justify-content-center" id="gameOver">
                 <div class="cartao">
                     <div class="linhas"></div>
                     <div class="titulo"><h4>Acerte o Alvo</h4></div>
@@ -87,7 +88,28 @@
                         <div class="detalhes">
                             <h2>Game Over</h2>
                             <div class="acaoBtn">
-                                <button type="button" onclick="escondeAcerto()">Continuar</button>
+                                <button id="reiniciar" type="button" onclick="reiniciarJogo()">Reiniciar</button>
+                                <button id="menu" type="button" onclick="menuPrincipal()">Menu</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <article class="d-flex" >
+        <div class="container align-self-center">
+            <div class="row justify-content-center" id="proximoNivel">
+                <div class="cartao">
+                    <div class="linhas"></div>
+                    <div class="titulo"><h4>Acerte o Alvo</h4></div>
+                    <div class="conteudo">
+                        <div class="detalhes">
+                            <div id="tituloNivel"></div>
+                            <div id="mensagemNivel"></div>
+                            <div class="acaoBtn">
+                                <button type="button" onclick="proximoNivel()">Reiniciar</button>
                             </div>
                         </div>
                     </div>

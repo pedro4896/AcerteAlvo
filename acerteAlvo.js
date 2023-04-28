@@ -10,13 +10,16 @@ const listaErros = [5,3,2,1,0];
 const listaPontuacao = [10,20,30,50,100];
 const listaTotalPontos = [50,100,150,200,250];
 const listaNivel = [1,2,3,4,5];
+const listaTituloNivel = ["Nível 1: Fácil","Nível 2: Médio","Nível 3: Difícil","Nível 4: Extremo","Nível 5: Insano"];
+const listaMensagemNivel = ["Excelente trabalho, agora tente um nível mais difícil!","Muito bem, agora tente um nível mais desafiador!",
+"Impressionante, você está progredindo muito bem!","Você é um verdadeiro atirador de elite!","Incrível, você completou o nível mais difícil de todos!"];
 const listaMunicao = ["ilimitado",20,10,5,0];
 
-var municao = undefined;
-var velocidade  = 2000;
-var erros = undefined;
-var pontosAdicionais = undefined;
-var totalPontos = undefined;
+var municao;
+var velocidade;
+var erros;
+var pontosAdicionais;
+var totalPontos;
 var nivel = 1;
 var errosAtuais = 0;
 var municaoAtual = 0;
@@ -65,33 +68,11 @@ function atualizaDados(){
     velocidade = listaVelocidade[nivel-1];   
     erros = listaErros[nivel-1];    
     pontosAdicionais = listaPontuacao[nivel-1];   
-    totalPontos = listaTotalPontos[nivel-1];   
+    totalPontos = listaTotalPontos[nivel-1];
 }
 
-function verificaTotalPontos(totalPontos) {
-    if (totalPontos >= pontuacao) {
-       return true; 
-    }
-    else{
-        return false;
-    }
-}
-
-function verificaTempo() {
-    
-}
-
-function verificaMunicao(municao) {
-    if (municaoAtual > municao) {
-        return true
-    }
-    else{
-        return false;
-    } 
-}
-
-function verificaErros(erros) {
-    if (errosAtuais > erros) {
+function verificaMunicao(){
+    if(municaoAtual > municao){
         return true;
     }
     else{
@@ -99,13 +80,39 @@ function verificaErros(erros) {
     }
 }
 
+function verificaErros(){
+    if(errosAtuais > erros){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function verificaTotalPontos(){
+    if(pontuacao >= totalPontos){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function verificaTempo(){
+
+}
+
+function verificaGeral(){
+    if(((verificaMunicao()) || (verificaErros())) && (verificaTotalPontos() == false)){
+        apresentaGameOver();
+    }
+    else if((verificaMunicao() == false) && (verificaMunicao() == false) && (verificaTotalPontos())){
+        apresentaProximoNivel();
+    }
+}
+
 function atualizaTela() {
     atualizaDados();
-    console.log("🚀 ~ file: acerteAlvo.js:79 ~ atualizaTela ~ totalPontos:", totalPontos)
-    console.log("🚀 ~ file: acerteAlvo.js:77 ~ atualizaTela ~ pontosAdicionais:", pontosAdicionais)
-    console.log("🚀 ~ file: acerteAlvo.js:75 ~ atualizaTela ~ erros:", erros)
-    console.log("🚀 ~ file: acerteAlvo.js:73 ~ atualizaTela ~ velocidade:", velocidade)
-    console.log("🚀 ~ file: acerteAlvo.js:71 ~ atualizaTela ~ municao:", municao)
     if (iniciar == true){
         limpaTela();
         xAleatorio = sorteiaPosicaoX(largura);
@@ -121,23 +128,28 @@ function dispara(evento){
     /* adicionando/subtraindo a altura da tela nas comparações dos valores do eixo Y */
     if (x > xAleatorio - raio && x < xAleatorio + raio &&
         y > yAleatorio - raio - tela.offsetTop && y < yAleatorio + raio - tela.offsetTop) {
-    pontuacao += pontosAdicionais;
-    escondeCanvas();
-    apresentaAcerto();
+        municaoAtual++;
+        pontuacao += pontosAdicionais;
+        pontos.innerHTML = "<h2>"+pontuacao+" pontos</h2>";
     } 
 
     else if (x > xAleatorio - (raio + 10) && x < xAleatorio + (raio + 10) &&
             y > yAleatorio - (raio + 10) - tela.offsetTop && y < yAleatorio + (raio + 10) - tela.offsetTop) {
+        municaoAtual++;
         pontuacao += pontosAdicionais;
-        escondeCanvas();
-        apresentaAcerto();
+        pontos.innerHTML = "<h2>"+pontuacao+" pontos</h2>";
     } 
 
     else if (x > xAleatorio - (raio + 20) && x < xAleatorio + (raio + 20) &&
             y > yAleatorio - (raio + 20) - tela.offsetTop && y < yAleatorio + (raio + 20) - tela.offsetTop) {
+        municaoAtual++;
         pontuacao += pontosAdicionais;
-        escondeCanvas();   
-        apresentaAcerto();
+        pontos.innerHTML = "<h2>"+pontuacao+" pontos</h2>";
+    }
+
+    else{
+        municaoAtual++;
+        errosAtuais++;
     }
 }
 
@@ -159,16 +171,15 @@ function escondeCanvas() {
     iniciar = false;
 }
 
-function apresentaAcerto() {
-    var acerto = document.getElementById("acerto");
+function apresentaGameOver() {
+    escondeCanvas();
+    var acerto = document.getElementById("gameOver");
     acerto.style.display = "flex";
-    pontos.innerHTML = "<h2>"+pontuacao+" pontos</h2>";
 }
 
-function escondeAcerto() {
-    var acerto = document.getElementById("acerto");
+function escondeGameOver() {
+    var acerto = document.getElementById("gameOver");
     acerto.style.display = "none";
-    apresentaCanvas();
 }
 
 function apresentaPontuacao(){
@@ -176,10 +187,23 @@ function apresentaPontuacao(){
     pontuacao.style.display = "flex";
 }
 
-function apresentaUsuario(){
+function escondePontuacao(){
+    var pontuacao = document.getElementById("pontuacao");
+    pontuacao.style.display = "none";
+}
+
+function apresentaIniciar(){
+    var inicio = document.getElementById("inicio");
+    inicio.style.display = "flex";
+}
+
+function escondeIniciar(){
     var inicio = document.getElementById("inicio");
     inicio.style.display = "none";
+}
 
+function apresentaUsuario(){
+    escondeIniciar();
     var usuario = document.getElementById("usuario");
     usuario.style.display = "flex";
 }
@@ -200,6 +224,10 @@ function verificaUsuario() {
     }
 }
 
+function apagaInput(){
+    var usuario = document.getElementById("nomeUsuario").value = "";
+}
+
 function apresentaNome(){
     var nome = document.getElementById("insiraNome");
     nome.style.display = "block";
@@ -210,5 +238,57 @@ function escondeNome(){
     nome.style.display = "nome";
 }
 
+function reiniciarJogo(){
+    pontuacao = 0;
+    errosAtuais = 0;
+    municaoAtual = 0;
+    pontuacao = 0;
+    pontos.innerHTML = "<h2>0 pontos</h2>";
+    escondeGameOver();
+    apresentaCanvas();
+}
+
+function menuPrincipal(){
+    nivel = 1;
+    pontuacao = 0;
+    errosAtuais = 0;
+    pontuacao = 0;
+    pontos.innerHTML = "<h2>0 pontos</h2>";
+    escondeGameOver();
+    escondePontuacao();
+    apagaInput();
+    apresentaIniciar();
+}
+
+function apresentaProximoNivel(){
+    escondeCanvas();
+    var tituloNivel = document.getElementById("tituloNivel");
+    tituloNivel.innerHTML = "<h2>"+ listaTituloNivel[nivel-1] + "</h2>";
+
+    var mensagemNivel = document.getElementById("mensagemNivel");
+    mensagemNivel.innerHTML = "<p>"+ listaMensagemNivel[nivel-1] + "</p>";
+
+    var acerto = document.getElementById("proximoNivel");
+    acerto.style.display = "flex";
+}
+
+function escondeProximoNivel(){
+    var acerto = document.getElementById("proximoNivel");
+    acerto.style.display = "none";
+}
+
+function proximoNivel(){
+    nivel++;
+    pontuacao = 0;
+    errosAtuais = 0;
+    pontuacao = 0;
+    municaoAtual = 0;
+    pontos.innerHTML = "<h2>0 pontos</h2>";
+    escondeProximoNivel();
+    apresentaCanvas();
+}
+
 tela.onclick = dispara;
-setInterval(atualizaTela, listaVelocidade[nivel-1]);
+atualizaTela();
+setInterval(verificaGeral, 250);
+setInterval(atualizaTela, velocidade);
