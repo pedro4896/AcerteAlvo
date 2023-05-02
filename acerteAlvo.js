@@ -13,7 +13,7 @@ const listaNivel = [1,2,3,4,5];
 const listaTituloNivel = ["Nível 1: Fácil","Nível 2: Médio","Nível 3: Difícil","Nível 4: Extremo","Nível 5: Insano"];
 const listaMensagemNivel = ["Excelente trabalho, agora tente um nível mais difícil!","Muito bem, agora tente um nível mais desafiador!",
 "Impressionante, você está progredindo muito bem!","Você é um verdadeiro atirador de elite!","Incrível, você completou o nível mais difícil de todos!"];
-const listaMunicao = ["ilimitado",20,10,5,0];
+const listaMunicao = ["ilimitado",20,10,5,3];
 
 var municao;
 var velocidade;
@@ -69,6 +69,28 @@ function atualizaDados(){
     erros = listaErros[nivel-1];    
     pontosAdicionais = listaPontuacao[nivel-1];   
     totalPontos = listaTotalPontos[nivel-1];
+    velocidade - listaVelocidade[nivel-1];
+    atualizaUtilitarios();
+
+}
+
+function atualizaUtilitarios(){
+    var apresentaNivel = document.getElementById("utilitariosNivel");
+    var ultimoNivel = listaNivel.length - 1;
+    apresentaNivel.innerHTML = "<p> Nível: "+ nivel + " / "+ listaNivel[ultimoNivel] + "</p>";
+
+    var apresentaPontuacao = document.getElementById("utilitariosPontuacao");
+    apresentaPontuacao.innerHTML = "<p> Pontuação: "+ pontuacao + " / "+ totalPontos + "</p>";
+
+    var apresentaErros = document.getElementById("utilitariosErros");
+    apresentaErros.innerHTML = "<p> Erros: "+ errosAtuais + " / "+ erros + "</p>";
+
+    var apresentaMunicao = document.getElementById("utilitariosMunicao");
+    apresentaMunicao.innerHTML = "<p> Munição: "+ municaoAtual + " / "+ municao + "</p>";
+
+    var apresentaVelocidade = document.getElementById("utilitariosVelocidade");
+    var ultimaVelocidade = listaVelocidade.length - 1;
+    apresentaVelocidade.innerHTML = "<p> Velocidade: "+ velocidade + " / "+ listaVelocidade[ultimaVelocidade] + "</p>"; 
 }
 
 function verificaMunicao(){
@@ -131,6 +153,7 @@ function dispara(evento){
         municaoAtual++;
         pontuacao += pontosAdicionais;
         pontos.innerHTML = "<h2>"+pontuacao+" pontos</h2>";
+        atualizaUtilitarios();
     } 
 
     else if (x > xAleatorio - (raio + 10) && x < xAleatorio + (raio + 10) &&
@@ -138,6 +161,7 @@ function dispara(evento){
         municaoAtual++;
         pontuacao += pontosAdicionais;
         pontos.innerHTML = "<h2>"+pontuacao+" pontos</h2>";
+        atualizaUtilitarios();
     } 
 
     else if (x > xAleatorio - (raio + 20) && x < xAleatorio + (raio + 20) &&
@@ -145,11 +169,13 @@ function dispara(evento){
         municaoAtual++;
         pontuacao += pontosAdicionais;
         pontos.innerHTML = "<h2>"+pontuacao+" pontos</h2>";
+        atualizaUtilitarios();
     }
 
     else{
         municaoAtual++;
         errosAtuais++;
+        atualizaUtilitarios();
     }
 }
 
@@ -161,6 +187,7 @@ function apresentaCanvas() {
         iniciar = true;
         tela.style.display = "block";
         apresentaPontuacao();
+        apresentaUtilitarios();
     }else{
         apresentaNome();
     }
@@ -173,13 +200,13 @@ function escondeCanvas() {
 
 function apresentaGameOver() {
     escondeCanvas();
-    var acerto = document.getElementById("gameOver");
-    acerto.style.display = "flex";
+    var gameOver = document.getElementById("gameOver");
+    gameOver.style.display = "flex";
 }
 
 function escondeGameOver() {
-    var acerto = document.getElementById("gameOver");
-    acerto.style.display = "none";
+    var gameOver = document.getElementById("gameOver");
+    gameOver.style.display = "none";
 }
 
 function apresentaPontuacao(){
@@ -239,25 +266,27 @@ function escondeNome(){
 }
 
 function reiniciarJogo(){
-    pontuacao = 0;
-    errosAtuais = 0;
-    municaoAtual = 0;
-    pontuacao = 0;
-    pontos.innerHTML = "<h2>0 pontos</h2>";
+    zeraUtilitarios();
+    atualizaUtilitarios();
     escondeGameOver();
     apresentaCanvas();
 }
 
-function menuPrincipal(){
-    nivel = 1;
+function zeraUtilitarios(){
     pontuacao = 0;
     errosAtuais = 0;
-    pontuacao = 0;
+    municaoAtual = 0;
     pontos.innerHTML = "<h2>0 pontos</h2>";
+}
+
+function menuPrincipal(){
+    zeraVelocidade();
+    zeraUtilitarios();
     escondeGameOver();
     escondePontuacao();
     apagaInput();
     apresentaIniciar();
+    nivel = 1;
 }
 
 function apresentaProximoNivel(){
@@ -277,15 +306,29 @@ function escondeProximoNivel(){
     acerto.style.display = "none";
 }
 
+function setVelocidade(){
+    velocidade = listaVelocidade[nivel-1];
+    clearInterval(intervalo);
+    setInterval(atualizaTela, velocidade);
+}
+
 function proximoNivel(){
     nivel++;
-    pontuacao = 0;
-    errosAtuais = 0;
-    pontuacao = 0;
-    municaoAtual = 0;
-    pontos.innerHTML = "<h2>0 pontos</h2>";
+    zeraUtilitarios();
+    atualizaUtilitarios();
     escondeProximoNivel();
     apresentaCanvas();
+}
+
+function apresentaUtilitarios(){
+    var utilitarios = document.getElementById("utilitarios");
+    utilitarios.style.display = "flex";
+    AtualizaUtilitarios();
+}
+
+function escondeUtilitarios(){
+    var utilitarios = document.getElementById("utilitarios");
+    utilitarios.style.display = "none";
 }
 
 tela.onclick = dispara;

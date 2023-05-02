@@ -161,6 +161,34 @@ canvas{
 
 /* ----- /ProximoNivel -----*/
 
+/* Utilitarios */
+#utilitarios{
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: absolute;
+    top: 1%;
+    left: 98%;
+    transform: translate(-98%, -1%);
+    color: #F3C16A;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    width: 450px;
+    filter: drop-shadow(2px 2px 2px #000);
+    background: #292929;
+}
+
+#utilitarios .item{
+    width: 200px;
+    height: 20px;
+    border: 1px solid gray;
+    padding: 0;
+    margin: 5px;
+    border-bottom: 1px solid gray;
+}
+
 #inicio{
     display: flex;
 }
