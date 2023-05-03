@@ -79,18 +79,11 @@ function atualizaUtilitarios(){
     var ultimoNivel = listaNivel.length - 1;
     apresentaNivel.innerHTML = "<p> Nível: "+ nivel + " / "+ listaNivel[ultimoNivel] + "</p>";
 
-    var apresentaPontuacao = document.getElementById("utilitariosPontuacao");
-    apresentaPontuacao.innerHTML = "<p> Pontuação: "+ pontuacao + " / "+ totalPontos + "</p>";
-
     var apresentaErros = document.getElementById("utilitariosErros");
     apresentaErros.innerHTML = "<p> Erros: "+ errosAtuais + " / "+ erros + "</p>";
 
     var apresentaMunicao = document.getElementById("utilitariosMunicao");
     apresentaMunicao.innerHTML = "<p> Munição: "+ municaoAtual + " / "+ municao + "</p>";
-
-    var apresentaVelocidade = document.getElementById("utilitariosVelocidade");
-    var ultimaVelocidade = listaVelocidade.length - 1;
-    apresentaVelocidade.innerHTML = "<p> Velocidade: "+ velocidade + " / "+ listaVelocidade[ultimaVelocidade] + "</p>"; 
 }
 
 function verificaMunicao(){
@@ -125,6 +118,10 @@ function verificaTempo(){
 }
 
 function verificaGeral(){
+    if(nivel > 5){
+        endGame();
+    }
+
     if(((verificaMunicao()) || (verificaErros())) && (verificaTotalPontos() == false)){
         apresentaGameOver();
     }
@@ -280,7 +277,6 @@ function zeraUtilitarios(){
 }
 
 function menuPrincipal(){
-    zeraVelocidade();
     zeraUtilitarios();
     escondeGameOver();
     escondePontuacao();
@@ -323,7 +319,7 @@ function proximoNivel(){
 function apresentaUtilitarios(){
     var utilitarios = document.getElementById("utilitarios");
     utilitarios.style.display = "flex";
-    AtualizaUtilitarios();
+    atualizaUtilitarios();
 }
 
 function escondeUtilitarios(){
@@ -331,7 +327,24 @@ function escondeUtilitarios(){
     utilitarios.style.display = "none";
 }
 
+function endGame(){
+    escondeCanvas();
+    escondePontuacao();
+    escondeUtilitarios();
+    var credits = document.getElementById('credit-roll');
+
+    function finalizarCreditos(){
+        credits.style.display = "none";
+        menuPrincipal();
+    }
+
+    credits.addEventListener('animationend',finalizarCreditos);
+
+    credits.style.display = "block";
+}
+
 tela.onclick = dispara;
 atualizaTela();
 setInterval(verificaGeral, 250);
+setInterval(atualizaDados, 250);
 setInterval(atualizaTela, velocidade);

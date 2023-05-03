@@ -164,30 +164,79 @@ canvas{
 /* Utilitarios */
 #utilitarios{
     display: none;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     position: absolute;
-    top: 1%;
+    top: 2%;
     left: 98%;
-    transform: translate(-98%, -1%);
+    transform: translate(-98%, -2%);
     color: #F3C16A;
-    text-align: center;
+    text-align: start;
     font-weight: bold;
     font-size: 15px;
-    width: 450px;
-    filter: drop-shadow(2px 2px 2px #000);
-    background: #292929;
+    width: 200px;
+    filter: drop-shadow(3px 3px 3px #000);
+    background-color: transparent;
 }
 
 #utilitarios .item{
     width: 200px;
     height: 20px;
-    border: 1px solid gray;
     padding: 0;
     margin: 5px;
-    border-bottom: 1px solid gray;
 }
+
+/* /Utilitarios */
+
+/* CreditRoll*/
+#credit-roll{
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#credit-roll ul{
+    list-style: none;
+    opacity: 0;
+    animation: credits 30s linear;
+    text-align: center;
+    color: #F3C16A;
+}
+
+#credit-roll li{
+    font-size: 36px;
+    margin-bottom: 5px;
+    filter: drop-shadow(2px 2px 2px #000);
+}
+
+#credit-roll li a{
+    color: #000;
+    filter: drop-shadow(2px 2px 2px #F3C16A);
+}
+
+#credit-roll .titulo{
+    font-size: 50px;
+}
+
+@keyframes credits{
+    0%{
+        opacity: 1;
+        transform: translateY(100%);
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+/* /CreditRoll */
 
 #inicio{
     display: flex;
