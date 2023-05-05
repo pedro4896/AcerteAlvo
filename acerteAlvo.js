@@ -63,15 +63,21 @@ function sorteiaPosicaoY(maximo) {
 function limpaTela() {
     pincel.clearRect(0, 0, largura, altura);
 }
+
+let intervalId;
+
 function atualizaDados(){
-    municao = listaMunicao[nivel-1];
-    velocidade = listaVelocidade[nivel-1];   
+    municao = listaMunicao[nivel-1];  
     erros = listaErros[nivel-1];    
     pontosAdicionais = listaPontuacao[nivel-1];   
     totalPontos = listaTotalPontos[nivel-1];
-    velocidade - listaVelocidade[nivel-1];
     atualizaUtilitarios();
+}
 
+function atualizaVelocidade(){
+    velocidade = listaVelocidade[nivel-1];
+    clearInterval(intervalId);
+    intervalId = setInterval(atualizaTela, velocidade);
 }
 
 function atualizaUtilitarios(){
@@ -138,6 +144,7 @@ function atualizaTela() {
         yAleatorio = sorteiaPosicaoY(altura);
         desenhaAlvo(xAleatorio, yAleatorio);
     }
+    atualizaVelocidade();
 }
 
 function dispara(evento){
@@ -302,12 +309,6 @@ function escondeProximoNivel(){
     acerto.style.display = "none";
 }
 
-function setVelocidade(){
-    velocidade = listaVelocidade[nivel-1];
-    clearInterval(intervalo);
-    setInterval(atualizaTela, velocidade);
-}
-
 function proximoNivel(){
     nivel++;
     zeraUtilitarios();
@@ -347,4 +348,3 @@ tela.onclick = dispara;
 atualizaTela();
 setInterval(verificaGeral, 250);
 setInterval(atualizaDados, 250);
-setInterval(atualizaTela, velocidade);
