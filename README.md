@@ -1,3 +1,5 @@
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=DC4B36&height=120&section=header"/>
+
 <div>
   <h1>AcerteAlvo <img src="https://github.com/pedro4896/AcerteAlvo/blob/master/tiroAlvo.png"/></h1> 
   <p>O jogo Acerte o alvo é um jogo simples e divertido de tiro ao alvo desenvolvido em JavaScript, HTML e CSS. O objetivo do jogo é atirar nos alvos que aparecem aleatoriamente na tela para marcar pontos e avançar para níveis mais difíceis</p>
@@ -30,3 +32,16 @@
   <h2>Sobre o desenvolvedor</h2>
   <p>Este jogo foi desenvolvido como um projeto pessoal por um desenvolvedor iniciante em JavaScript. O código fonte do jogo é aberto e pode ser utilizado livremente. Se você encontrar algum erro ou tiver sugestões de melhorias, sinta-se à vontade para contribuir para o projeto.</p>
 </div>
+
+<div>
+  <h2>Contate-me</h2>
+  <div style="display=inline-block"> 
+    <a href="https://www.instagram.com/pedro_victor4896/" target="_blank"><img height=40 title="Instagram" alt="Instagram" src="https://icongr.am/simple/instagram.svg?size=128&color=currentColor&colored=true" target="_blank"></a>
+    <a href="https://twitter.com/PedroVi34994476" target="_blank"><img height=40 title="Twitter" alt="Twitter" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" target="_blank"></a>
+    <a href="https://www.linkedin.com/in/pedro-victor-dev/" target="_blank"><img height=40 title="Linkedin" alt="Linkedin" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" /></a> 
+    <a href="https://www.twitch.tv/pedrovictor4896" target="_blank"><img title="Twitch" alt="Twitch" height=40 src="https://icongr.am/simple/twitch.svg?size=128&color=currentColor&colored=true" target="_blank"></a>
+    <a href = "mailto:pedrovictordasilvapereira4896@gmail.com"><img title="Gmail" alt="Gmail"  height=40 src="https://icongr.am/simple/gmail.svg?size=128&color=currentColor&colored=true" target="_blank"></a>
+  </div>
+</div>
+
+<img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=DC4B36&height=120&section=footer"/>
