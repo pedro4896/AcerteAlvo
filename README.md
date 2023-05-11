@@ -1,7 +1,7 @@
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=DC4B36&height=120&section=header"/>
 
 <div>
-  <h1>AcerteAlvo <img src="https://github.com/pedro4896/AcerteAlvo/blob/master/tiroAlvo.png"/></h1> 
+  <h1>AcerteAlvo <img src="https://github.com/pedro4896/AcerteAlvo/blob/main/tiroAlvo.png"/></h1> 
   <p>O jogo Acerte o alvo é um jogo simples e divertido de tiro ao alvo desenvolvido em JavaScript, HTML e CSS. O objetivo do jogo é atirar nos alvos que aparecem aleatoriamente na tela para marcar pontos e avançar para níveis mais difíceis</p>
 </div>
 
