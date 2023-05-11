@@ -1,480 +1,486 @@
-@font-face{
-    font-family: "Angel-Arms";
-    src: url("Angel-Arms.woff");
-}
-
-html,body{
-    background-image: url("deserto.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    overflow: hidden;
-    cursor: url(foco.png) 32 32, auto; 
-    font-family: "Angel-Arms";
-}
-
-button{
-    cursor: pointer;
-}
-
-article{
-    height: 100vh;
-}
-
-canvas{
-    display: none;
-}
-
-/* ----- Pontuação ----- */
-
-#pontuacao{
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 6%;
-    left: 50%;
-    transform: translate(-50%, -4%);
-    width: 300px;
-    height: 50px; 
-    background-color: #292929;
-    color: #F3C16A;
-}
-
-#pontuacao .cartao{
-    position: relative;
-    width: 300px;
-    height: 70px;
-    background: #292929;
-    cursor: url(foco.png) 32 32, auto; 
-}
-
-#pontuacao .cartao .titulo{
-    top: -15px;
-}
-
-#pontuacao .cartao .titulo h4{
-    font-size: 15px;
-}
-
-#pontuacao .cartao .conteudo .detalhes{
-    transform: translateY(37px);
-}
-
-#pontuacao .cartao .conteudo .detalhes h2{
-    letter-spacing: 5px;
-    font-size: 1.5em;
-    color: #F3C16A;
-}
-
-/* ----- /Pontuação ----- */
-
-/* ----- Usuario ----- */
-
-#usuario {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#usuario .cartao .conteudo .detalhes{
-    transform: translateY(0px);
-}
-
-#usuario .cartao .conteudo .detalhes h2{
-    letter-spacing: 5px;
-    font-size: 1.5em;
-    color: #F3C16A;
-}
-
-#usuario input{
-    width: 100%;
-    transform: translateY(10px);
-    color: #292929;
-    background-color: #DC4B36;
-    padding: 5px;
-    padding-left: 10px;
-    letter-spacing: 2px;
-    font-weight: 600;
-    text-transform: uppercase;
-    overflow: hidden;
-    border: 0;
-    border-radius: 5px;
-    outline: none;
-}
-
-#usuario input::placeholder{
-    color: #292929;
-}
-
-#usuario div#insiraNome{
-    display: none;
-    color: red;
-    text-align: left;
-    padding-left: 5px;
-    transform: translateY(15px);
-}
-
-/* ----- /Usuario ----- */
-
-/* ----- ProximoNivel -----*/
-#proximoNivel{
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#proximoNivel .cartao{
-    height: 200px;
-}
-
-#proximoNivel .cartao .conteudo .detalhes{
-    transform: translateY(30px);
-}
-
-#proximoNivel .cartao:hover .conteudo .detalhes{
-    transform: translateY(10px);
-}
-
-#proximoNivel .cartao .conteudo .detalhes p{
-    color: #F3C16A;
-}
-
-#proximoNivel .cartao .conteudo .detalhes .acaoBtn button{
-    transform: translateY(60px);
-}
-
-#proximoNivel .cartao:hover .conteudo .detalhes .acaoBtn button{
-    transform: translateY(10px);
-}
-
-#proximoNivel .cartao .conteudo .detalhes .acaoBtn button::after{
-    content: 'Próximo';
-}
-
-/* ----- /ProximoNivel -----*/
-
-/* Utilitarios */
-#utilitarios{
-    display: none;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    position: absolute;
-    top: 2%;
-    left: 98%;
-    transform: translate(-98%, -2%);
-    color: #F3C16A;
-    text-align: start;
-    font-weight: bold;
-    font-size: 15px;
-    width: 200px;
-    filter: drop-shadow(3px 3px 3px #000);
-    background-color: transparent;
-}
-
-#utilitarios .item{
-    width: 200px;
-    height: 20px;
-    padding: 0;
-    margin: 5px;
-}
-
-/* /Utilitarios */
-
-/* CreditRoll*/
-#credit-roll{
-    display: none;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-#credit-roll ul{
-    list-style: none;
-    opacity: 0;
-    animation: credits 30s linear;
-    text-align: center;
-    color: #F3C16A;
-}
-
-#credit-roll li{
-    font-size: 36px;
-    margin-bottom: 5px;
-    filter: drop-shadow(2px 2px 2px #000);
-}
-
-#credit-roll li a{
-    color: #000;
-    filter: drop-shadow(2px 2px 2px #F3C16A);
-}
-
-#credit-roll .black{
-    color: #000;
-    filter: drop-shadow(2px 2px 2px #F3C16A);
-}
-
-#credit-roll .titulo{
-    font-size: 50px;
-}
-
-@keyframes credits{
-    0%{
-        opacity: 1;
-        transform: translateY(100%);
+/* ----- CONFIGURAÇÕES GERAIS ----- */
+    @font-face{
+        font-family: "Angel-Arms";
+        src: url("Angel-Arms.woff");
     }
-    90%{
-        opacity: 1;
+
+    html,body{
+        background-image: url("deserto.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        overflow: hidden;
+        cursor: url(foco.png) 32 32, auto; 
+        font-family: "Angel-Arms";
     }
-    100%{
-        opacity: 0;
-        transform: translateY(-100%);
+
+    button{
+        cursor: pointer;
     }
-}
 
-/* /CreditRoll */
-
-#inicio{
-    display: flex;
-}
-
-#gameOver {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.cartao{
-    position: relative;
-    width: 400px;
-    height: 250px;
-    background: #292929;
-    transition: 0.5s;
-    cursor: pointer;
-}
-
-#inicio .cartao:hover{
-    height: 300px;
-}
-
-#gameOver .cartao{
-    height: 200px;
-}
-
-.cartao .linhas{
-    position: absolute;
-    inset: 0;
-    background: #DC4B36;
-    overflow: hidden;
-}
-
-.cartao .linhas::before{
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 600px;
-    height: 120px;
-    background: linear-gradient(transparent,#F3C16A,#F3C16A,#F3C16A,transparent);
-    animation: animate 4s linear infinite;
-}
-
-@keyframes animate {
-    0%{
-        transform: translate(-50%,-50%) rotate(0deg);
+    article{
+        height: 100vh;
     }
-    100%{
-        transform: translate(-50%,-50%) rotate(360deg);
-    }  
-}
 
-.cartao .linhas::after{
-    content: '';
-    position: absolute;
-    inset: 3px;
-    background: #292929;
-}
-
-.cartao .titulo{
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 250px;
-    background: #F3C16A;
-    transition: 0.5s;
-    z-index: 10;
-    overflow: hidden;
-}
-
-#inicio .cartao:hover .titulo, #gameOver .cartao:hover .titulo, #proximoNivel .cartao:hover .titulo{
-    top: -23px;
-    width: 350px;
-    height: 50px;
-}
-
-.cartao .titulo::before{
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 500px;
-    height: 150px;
-    transform: translate(-50%,-50%);
-    background: linear-gradient(transparent,#DC4B36,#DC4B36,#DC4B36,transparent);
-    animation: animate2 2s linear infinite;
-}    
-
-@keyframes animate2 {
-    0%{
-        transform: translate(-50%,-50%) rotate(360deg);
+    canvas{
+        display: none;
     }
-    100%{
-        transform: translate(-50%,-50%) rotate(0deg);
-    }  
-}
 
-.cartao .titulo::after{
-    content: '';
-    position: absolute;
-    background: #292929;
-    inset: 3px;
-}
-
-.cartao .titulo h4{
-    position: relative;
-    text-transform: uppercase;
-    text-align: center;
-    margin: 10px;
-    z-index: 1;
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    color: #F3C16A;
-    letter-spacing: 4px;
-    filter: drop-shadow(2px 2px 2px #DC4B36);
-}
-
-.cartao .conteudo{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    overflow: hidden;
-}
-
-.cartao .conteudo .detalhes{
-    padding: 40px;
-    text-align: center;
-    width: 100%;
-    transition: 0.5s;
-    transform: translateY(60px);
-}
-
-#gameOver .cartao .conteudo .detalhes{
-    font-size: 30px;
-    transform: translateY(45px);
-}
-
-#inicio .cartao:hover .conteudo .detalhes{
-    transform: translateY(0px);
-}
-
-#gameOver .cartao:hover .conteudo .detalhes{
-    transform: translateY(10px);
-}
-
-.cartao .conteudo .detalhes h2{
-    font-size: 1.25em;
-    font-weight: 600;
-    color: #F3C16A;
-}
-
-.cartao .conteudo .detalhes .acaoBtn button{
-    padding: 5px;
-    letter-spacing: 5px;
-    text-align: center;
-    width: 50%;
-    transition: 0.5s;
-    transform: translateY(20px);
-    overflow: hidden;
-    background: transparent;
-    border: 0;
-    border-radius: 5px;
-    color: #DC4B36;
-    outline: none;
-    cursor: pointer;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-#gameOver .cartao .conteudo .detalhes .acaoBtn{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-#gameOver .cartao .conteudo .detalhes .acaoBtn button{
-    margin: 15px;
-    font-size: 15px;
-    transform: translateY(60px);
-}
-
-#gameOver .cartao:hover .conteudo .detalhes .acaoBtn button{
-    transform: translateY(20px);
-}
-
-.cartao .conteudo .detalhes .acaoBtn button:hover{
-    color: #F0B863;
-}
-
-.cartao .conteudo .detalhes .acaoBtn button::before{
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 600px;
-    height: 120px;
-    background: linear-gradient(transparent,#F0B863,#F0B863,#F0B863,transparent);
-    animation: animate3 2s linear infinite;
-}
-
-@keyframes animate3 {
-    0%{
-        transform: translate(-50%,-50%) rotate(0deg);
+    .cartao{
+        position: relative;
+        width: 400px;
+        height: 250px;
+        background: #292929;
+        transition: 0.5s;
+        cursor: pointer;
     }
-    100%{
-        transform: translate(-50%,-50%) rotate(360deg);
-    }  
-}
 
-.cartao .conteudo .detalhes .acaoBtn button::after{
-    content: 'Iniciar';
-    position: absolute;
-    inset: 3px;
-    background: #292929;
-}
+    .cartao .linhas{
+        position: absolute;
+        inset: 0;
+        background: #DC4B36;
+        overflow: hidden;
+    }
 
-#gameOver .cartao .conteudo .detalhes .acaoBtn button#reiniciar::after{
-    content: 'Reiniciar';
-}
+    .cartao .linhas::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 120px;
+        background: linear-gradient(transparent,#F3C16A,#F3C16A,#F3C16A,transparent);
+        animation: animate 4s linear infinite;
+    }
 
-#gameOver .cartao .conteudo .detalhes .acaoBtn button#menu::after{
-    content: 'Menu';
-}
+    @keyframes animate {
+        0%{
+            transform: translate(-50%,-50%) rotate(0deg);
+        }
+        100%{
+            transform: translate(-50%,-50%) rotate(360deg);
+        }  
+    }
 
-#usuario .cartao .conteudo .detalhes .acaoBtn button::after{
-    content: 'Pronto';
-}
+    .cartao .linhas::after{
+        content: '';
+        position: absolute;
+        inset: 3px;
+        background: #292929;
+    }
+
+    .cartao .titulo{
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 250px;
+        background: #F3C16A;
+        transition: 0.5s;
+        z-index: 10;
+        overflow: hidden;
+    }
+
+    .cartao .titulo::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 500px;
+        height: 150px;
+        transform: translate(-50%,-50%);
+        background: linear-gradient(transparent,#DC4B36,#DC4B36,#DC4B36,transparent);
+        animation: animate2 2s linear infinite;
+    }    
+
+    @keyframes animate2 {
+        0%{
+            transform: translate(-50%,-50%) rotate(360deg);
+        }
+        100%{
+            transform: translate(-50%,-50%) rotate(0deg);
+        }  
+    }
+
+    .cartao .titulo::after{
+        content: '';
+        position: absolute;
+        background: #292929;
+        inset: 3px;
+    }
+
+    .cartao .titulo h4{
+        position: relative;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 10px;
+        z-index: 1;
+        width: calc(100% - 20px);
+        height: calc(100% - 20px);
+        color: #F3C16A;
+        letter-spacing: 4px;
+        filter: drop-shadow(2px 2px 2px #DC4B36);
+    }
+
+    .cartao .conteudo{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        overflow: hidden;
+    }
+
+    .cartao .conteudo .detalhes{
+        padding: 40px;
+        text-align: center;
+        width: 100%;
+        transition: 0.5s;
+        transform: translateY(60px);
+    }
+
+    .cartao .conteudo .detalhes h2{
+        font-size: 1.25em;
+        font-weight: 600;
+        color: #F3C16A;
+    }
+
+    .cartao .conteudo .detalhes .acaoBtn button{
+        padding: 5px;
+        letter-spacing: 5px;
+        text-align: center;
+        width: 50%;
+        transition: 0.5s;
+        transform: translateY(20px);
+        overflow: hidden;
+        background: transparent;
+        border: 0;
+        border-radius: 5px;
+        color: #DC4B36;
+        outline: none;
+        cursor: pointer;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .cartao .conteudo .detalhes .acaoBtn button:hover{
+        color: #F0B863;
+    }
+
+    .cartao .conteudo .detalhes .acaoBtn button::before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 120px;
+        background: linear-gradient(transparent,#F0B863,#F0B863,#F0B863,transparent);
+        animation: animate3 2s linear infinite;
+    }
+
+    @keyframes animate3 {
+        0%{
+            transform: translate(-50%,-50%) rotate(0deg);
+        }
+        100%{
+            transform: translate(-50%,-50%) rotate(360deg);
+        }  
+    }
+
+    .cartao .conteudo .detalhes .acaoBtn button::after{
+        content: 'Iniciar';
+        position: absolute;
+        inset: 3px;
+        background: #292929;
+    }
+
+/* ----- /CONFIGURAÇÕES GERAIS ----- */
+
+/* ----- CONFIGURAÇÕES ESPECÍFICAS -----*/
+
+    /* ----- Pontuação ----- */
+        #pontuacao{
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 6%;
+            left: 50%;
+            transform: translate(-50%, -4%);
+            width: 300px;
+            height: 50px; 
+            background-color: #292929;
+            color: #F3C16A;
+        }
+
+        #pontuacao .cartao{
+            position: relative;
+            width: 300px;
+            height: 70px;
+            background: #292929;
+            cursor: url(foco.png) 32 32, auto; 
+        }
+
+        #pontuacao .cartao .titulo{
+            top: -15px;
+        }
+
+        #pontuacao .cartao .titulo h4{
+            font-size: 15px;
+        }
+
+        #pontuacao .cartao .conteudo .detalhes{
+            transform: translateY(37px);
+        }
+
+        #pontuacao .cartao .conteudo .detalhes h2{
+            letter-spacing: 5px;
+            font-size: 1.5em;
+            color: #F3C16A;
+        }
+    /* ----- /Pontuação ----- */
+
+    /* ----- Utilitarios ----- */
+        #utilitarios{
+            display: none;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            position: absolute;
+            top: 2%;
+            left: 98%;
+            transform: translate(-98%, -2%);
+            color: #F3C16A;
+            text-align: start;
+            font-weight: bold;
+            font-size: 15px;
+            width: 200px;
+            filter: drop-shadow(3px 3px 3px #000);
+            background-color: transparent;
+        }
+
+        #utilitarios .item{
+            width: 200px;
+            height: 20px;
+            padding: 0;
+            margin: 5px;
+        }
+    /* ----- /Utilitarios ----- */
+
+    /* ----- Inicio ----- */
+        #inicio{
+            display: flex;
+        }
+
+        #inicio .cartao:hover{
+            height: 300px;
+        }
+
+        #inicio .cartao:hover .conteudo .detalhes{
+            transform: translateY(0px);
+        }
+    /* ----- /Inicio ----- */
+
+    /* ----- Usuario ----- */
+        #usuario {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #usuario .cartao .conteudo .detalhes{
+            transform: translateY(0px);
+        }
+
+        #usuario .cartao .conteudo .detalhes h2{
+            letter-spacing: 5px;
+            font-size: 1.5em;
+            color: #F3C16A;
+        }
+
+        #usuario input{
+            width: 100%;
+            transform: translateY(10px);
+            color: #292929;
+            background-color: #DC4B36;
+            padding: 5px;
+            padding-left: 10px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            overflow: hidden;
+            border: 0;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        #usuario input::placeholder{
+            color: #292929;
+        }
+
+        #usuario div#insiraNome{
+            display: none;
+            color: red;
+            text-align: left;
+            padding-left: 5px;
+            transform: translateY(15px);
+        }
+
+        #usuario .cartao .conteudo .detalhes .acaoBtn button::after{
+            content: 'Pronto';
+        }
+    /* ----- /Usuario ----- */
+
+    /* ----- GameOver ----- */
+        #gameOver {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #gameOver .cartao{
+            height: 200px;
+        }
+
+        #gameOver .cartao .conteudo .detalhes{
+            font-size: 30px;
+            transform: translateY(45px);
+        }
+
+        #gameOver .cartao:hover .conteudo .detalhes{
+            transform: translateY(10px);
+        }
+
+        #gameOver .cartao .conteudo .detalhes .acaoBtn{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        #gameOver .cartao .conteudo .detalhes .acaoBtn button{
+            margin: 15px;
+            font-size: 15px;
+            transform: translateY(60px);
+        }
+
+        #gameOver .cartao:hover .conteudo .detalhes .acaoBtn button{
+            transform: translateY(20px);
+        }
+
+        #gameOver .cartao .conteudo .detalhes .acaoBtn button#reiniciar::after{
+            content: 'Reiniciar';
+        }
+
+        #gameOver .cartao .conteudo .detalhes .acaoBtn button#menu::after{
+            content: 'Menu';
+        }
+    /* ----- /GameOver ----- */
+
+    /* ----- ProximoNivel -----*/
+        #proximoNivel{
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #proximoNivel .cartao{
+            height: 200px;
+        }
+
+        #proximoNivel .cartao .conteudo .detalhes{
+            transform: translateY(30px);
+        }
+
+        #proximoNivel .cartao:hover .conteudo .detalhes{
+            transform: translateY(10px);
+        }
+
+        #proximoNivel .cartao .conteudo .detalhes p{
+            color: #F3C16A;
+        }
+
+        #proximoNivel .cartao .conteudo .detalhes .acaoBtn button{
+            transform: translateY(60px);
+        }
+
+        #proximoNivel .cartao:hover .conteudo .detalhes .acaoBtn button{
+            transform: translateY(10px);
+        }
+
+        #proximoNivel .cartao .conteudo .detalhes .acaoBtn button::after{
+            content: 'Próximo';
+        }
+    /* ----- /ProximoNivel -----*/
+
+    /* ---- CreditRoll ----- */
+        #credit-roll{
+            display: none;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #credit-roll ul{
+            list-style: none;
+            opacity: 0;
+            animation: credits 30s linear;
+            text-align: center;
+            color: #F3C16A;
+        }
+
+        #credit-roll li{
+            font-size: 36px;
+            margin-bottom: 5px;
+            filter: drop-shadow(2px 2px 2px #000);
+        }
+
+        #credit-roll li a{
+            color: #000;
+            filter: drop-shadow(2px 2px 2px #F3C16A);
+        }
+
+        #credit-roll .black{
+            color: #000;
+            filter: drop-shadow(2px 2px 2px #F3C16A);
+        }
+
+        #credit-roll .titulo{
+            font-size: 50px;
+        }
+
+        @keyframes credits{
+            0%{
+                opacity: 1;
+                transform: translateY(100%);
+            }
+            90%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+        }
+    /* ----- /CreditRoll ----- */
+
+    /* ----- Configurações em comum ----- */
+        #inicio .cartao:hover .titulo, #gameOver .cartao:hover .titulo, #proximoNivel .cartao:hover .titulo{
+            top: -23px;
+            width: 350px;
+            height: 50px;
+        }
+    /* ----- /Configurações em comum ----- */
+
+/* /CONFIGURAÇÕES ESPECÍFICAS */
