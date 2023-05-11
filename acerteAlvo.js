@@ -60,28 +60,28 @@ function limpaTela() {
 }
 
 /* ----- Cria alvo na tela ----- */
-function desenhaCirculo(x, y, raio, cor) { // cria os circulo que compõe o alvo
-    pincel.fillStyle = cor;
-    pincel.beginPath();
-    pincel.arc(x, y, raio, 0, 2 * Math.PI);
-    pincel.fill();
-}
+    function desenhaCirculo(x, y, raio, cor) { // cria os circulo que compõe o alvo
+        pincel.fillStyle = cor;
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
+        pincel.fill();
+    }
 
-function desenhaAlvo(x ,y) { // cria o alvo
-    desenhaCirculo(x, y, raio + 20, '#800404');
-    desenhaCirculo(x, y, raio + 10, 'white');
-    desenhaCirculo(x, y, raio, '#800404'); 
-}
+    function desenhaAlvo(x ,y) { // cria o alvo
+        desenhaCirculo(x, y, raio + 20, '#800404');
+        desenhaCirculo(x, y, raio + 10, 'white');
+        desenhaCirculo(x, y, raio, '#800404'); 
+    }
 
-function sorteiaPosicaoX(maximo) { //sorteia o valor de X
-    minimo = 0;
-    return Math.floor(Math.random() * (maximo - minimo + 1) + minimo);
-}
+    function sorteiaPosicaoX(maximo) { //sorteia o valor de X
+        minimo = 0;
+        return Math.floor(Math.random() * (maximo - minimo + 1) + minimo);
+    }
 
-function sorteiaPosicaoY(maximo) { //sorteia o valor de Y
-    minimo = 130;
-    return Math.floor(Math.random() * (maximo - minimo + 1) + minimo);
-}
+    function sorteiaPosicaoY(maximo) { //sorteia o valor de Y
+        minimo = 130;
+        return Math.floor(Math.random() * (maximo - minimo + 1) + minimo);
+    }
 /* ----- /Cria alvo na tela ----- */
 
 /* ----- /Atribuí as especficações de acordo com o nível as varíaveis de controle ----- */
